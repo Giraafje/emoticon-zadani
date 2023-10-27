@@ -13,8 +13,20 @@ const App = () => {
     color: 3
   })
 
+  const changeEyes = (newEyes) => {
+    setSettings({...settings, eyes: newEyes})
+  }
+
+  const changeMouth = (newMouth) => {
+    setSettings({...settings, mouth: newMouth})
+  }
+
+  const changeColor = (newColor) => {
+    setSettings({...settings, color: newColor})
+  }
+
   return (
-    <SettingContext.Provider value={{...settings}}>
+    <SettingContext.Provider value={{...settings, changeEyes, changeMouth, changeColor}}>
       <div className="container">
         <header>
           <h1>Vytvoř si vlastní emotikon</h1>

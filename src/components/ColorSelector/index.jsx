@@ -1,19 +1,22 @@
-import {colorsData} from '../../data';
+import { colorsData } from '../../data';
+import { useSettings } from '../../setting-context'
 
 const ColorSelector = () => {
+	const { color, changeColor } = useSettings();
 
 	const handleClick = (item) => {
 		console.log('color', item.id);
+		changeColor(item.id)
 	}
 
 	return (
 		<div className="items">
-			{colorsData.map(color =>
+			{colorsData.map(colorItem =>
 				<div
-					className='item'
-					key={color.id}
-					style={{ backgroundColor: color.value}}
-					onClick={() => { handleClick(color) }}
+					className={colorItem.id === color ? 'item active' : 'item'}
+					key={colorItem.id}
+					style={{ backgroundColor: colorItem.value}}
+					onClick={() => { handleClick(colorItem) }}
 					/>
 			)}
 		</div>
